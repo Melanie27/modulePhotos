@@ -1,0 +1,6 @@
+target 'modulePhotos' do
+
+pod 'Firebase/Core'
+
+
+end
