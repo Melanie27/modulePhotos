@@ -88,6 +88,82 @@
     
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(nonnull NSDictionary<NSString *,id> *)info {
+    //didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    NSMutableDictionary *parameters = [@{} mutableCopy];
+    [parameters setObject:[info objectForKey:@"UIImagePickerControllerReferenceURL"] forKey:@"petImageURL"];
+    NSURL *profileImageURL = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+    PHFetchResult *result2 = [PHAsset fetchAssetsWithALAssetURLs:@[profileImageURL] options:nil];
+    PHAsset *asset = result2.firstObject;
+    
+    PHImageManager *manager = [PHImageManager defaultManager];
+    [manager requestImageForAsset:asset targetSize:CGSizeMake(100, 100) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        NSLog(@" resulttttt %@",result);
+    }];
+    
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    //NSData *chosenImageData = [NSData dataWithContentsOfURL:profileImageURL];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [self.uploadProfilePhotoButton setBackgroundImage:chosenImage forState:UIControlStateNormal];
+    
+    
+    PHFetchResult *result = [PHAsset fetchAssetsWithALAssetURLs:@[parameters[@"petImageURL"]] options:nil];
+    __block NSInteger resultLoopCount = 0;
+    [result enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
+        resultLoopCount++;
+        [asset requestContentEditingInputWithOptions:kNilOptions
+                                   completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+                                       //NSURL *imageURL = contentEditingInput.fullSizeImageURL;
+                                       //NSString *localURLString = [imageURL path];
+                                       // NSString *theFileName = [[localURLString lastPathComponent] stringByDeletingPathExtension];
+                                       
+                                       NSURL *tmpDirURL = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
+                                       //NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                                       
+                                       NSURL *imageSubdirectory = [tmpDirURL URLByAppendingPathComponent:@"MySubfolderName"];
+                                       
+                                       NSURL *filePathURL = [imageSubdirectory URLByAppendingPathComponent:@"MyImageName1.jpg"];
+                                       //NSURL *fileURL = [NSURL fileURLWithPath:filePathString];
+                                       
+                                       NSString *theFileName = [imageSubdirectory lastPathComponent];
+                                       NSData *imageData = UIImageJPEGRepresentation(chosenImage, 0.85f);
+                                       BOOL writeSucceeded = [imageData writeToURL:filePathURL atomically:YES];
+                                       //[chosenImageData writeToURL:fileURL atomically:YES];
+                                       
+                                       FIRStorageMetadata *newMetadata = [[FIRStorageMetadata alloc] init];
+                                       NSLog(@"wrote (%@) success = %@ loop %ld",filePathURL,writeSucceeded?@"true":@"false",resultLoopCount);
+                                       newMetadata.contentType = @"image/jpeg";
+                                       
+                                       
+                                       FIRStorage *storage = [FIRStorage storage];
+                                       FIRStorageReference *storageRef = [storage referenceForURL:@"gs://modulephotos-76e19.appspot.com/petAlbums/"];
+                                       FIRStorageReference *profileRef = [storageRef child:theFileName];
+                                       
+                                       //NSURL *filePath = [NSURL fileURLWithPath:theFileName];
+                                       //put data must be NSDATA
+                                       [profileRef putFile:filePathURL metadata:newMetadata completion:^(FIRStorageMetadata *metadata, NSError *error) {
+                                           if (error != nil) {
+                                               // Uh-oh, an error occurred!
+                                               NSLog(@"Firebase Image Storage error %@ (%@)", error, filePathURL);
+                                           } else {
+                                               NSURL *downloadURL = metadata.downloadURL;
+                                               NSString *downloadURLString = [ downloadURL absoluteString];
+                                               self.downloadURLString = downloadURLString;
+                                               
+                                               
+                                           }
+                                       }];
+                                       
+                                   }];
+    }];
+    
+    
+}
+
 -(void)sendPetInfoToFirebase {
     NSMutableDictionary *addPetParameters = [@{} mutableCopy];
     PCDataSource *pc = [PCDataSource sharedInstance];
@@ -118,7 +194,7 @@
         NSString *petImageString = self.downloadURLString;
         if ([self.downloadURLString length] == 0) {
             //NSLog(@"no image was uploaded" );
-            petImageString = @"https://firebasestorage.googleapis.com/v0/b/petcemetary-5fec2.appspot.com/o/petFeed%2FprofilePlaceholder.png?alt=media&token=c5d106a3-d5d0-4d69-8732-a29bf1f3542c";
+            petImageString = @"https://firebasestorage.googleapis.com/v0/b/modulephotos-76e19.appspot.com/o/petFeed%2FprofilePlaceholder.png?alt=media&token=c5d106a3-d5d0-4d69-8732-a29bf1f3542c";
             [addPetParameters setObject:petImageString forKey:@"placeholderImage"];
         }
         

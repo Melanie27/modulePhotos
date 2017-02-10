@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="629.60000000000002" y="-450.22488755622192"/>
         </scene>
-        <!--Add Pet Profile View Controller-->
+        <!--Title-->
         <scene sceneID="mGJ-KG-5uM">
             <objects>
                 <viewController id="p4q-eU-vfP" customClass="AddPetProfileViewController" sceneMemberID="viewController">
@@ -140,6 +140,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="SlF-zB-sIV">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="AAN-jL-pqj">
+                            <connections>
+                                <action selector="savePetProfile:" destination="p4q-eU-vfP" id="e3h-sh-fio"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="animalPersonalityTextView" destination="rU2-uz-otd" id="6bG-Cp-GBd"/>
                         <outlet property="animalTypeTextField" destination="4Zw-SR-WeT" id="iIC-sl-frh"/>

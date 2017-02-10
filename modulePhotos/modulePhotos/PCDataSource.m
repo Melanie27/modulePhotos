@@ -386,7 +386,7 @@
                                        NSString *theFileName = [[localURLString lastPathComponent] stringByDeletingPathExtension];
                                        
                                        FIRStorage *storage = [FIRStorage storage];
-                                       FIRStorageReference *storageRef = [storage referenceForURL:@"gs://petcemetary-5fec2.appspot.com/petAlbums/"];
+                                       FIRStorageReference *storageRef = [storage referenceForURL:@"gs://modulephotos-76e19.appspot.com/petAlbums/"];
                                        FIRStorageReference *profileRef = [storageRef child:theFileName];
                                        
                                        
