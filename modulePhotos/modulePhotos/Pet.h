@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
+
 @interface Pet : NSObject
 
 
@@ -35,7 +36,17 @@
 
 
 
+//ALBUM MEDIA
+@property (nonatomic, strong) NSArray *albumCaptionStrings;
+@property (nonatomic, strong) NSString *albumCaptionString;
+@property (nonatomic, strong) NSArray *albumImageStrings;
+@property (nonatomic, strong) NSString *albumImageString;
 
+
+
+@property (nonatomic, strong) UIImage *albumImage;
+@property (nonatomic, strong) NSArray *albumImages;
+@property (nonatomic, strong) NSMutableDictionary *albumMedia;
 @property (nonatomic, strong) NSString *photoIDString;
 
 
