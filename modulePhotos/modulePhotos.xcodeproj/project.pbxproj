@@ -14,6 +14,8 @@
 		9B23DD291E4D23B000B3F856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B23DD281E4D23B000B3F856 /* Assets.xcassets */; };
 		9B23DD2C1E4D23B000B3F856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B23DD2A1E4D23B000B3F856 /* LaunchScreen.storyboard */; };
 		9B8B697C1E4D285400A5FB02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B8B697B1E4D285400A5FB02 /* GoogleService-Info.plist */; };
+		9BBB35151E4E39F700E5D9E5 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB35141E4E39F700E5D9E5 /* UIViewController+Alerts.m */; };
+		9BE9BDBE1E4E356A0007F9EC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE9BDBD1E4E356A0007F9EC /* LoginViewController.m */; };
 		F26B49A4AC971270C53F2C96 /* libPods-modulePhotos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D708FAC892B51FC12C7ADF /* libPods-modulePhotos.a */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,10 @@
 		9B23DD2B1E4D23B000B3F856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B23DD2D1E4D23B000B3F856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B8B697B1E4D285400A5FB02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BBB35131E4E39F700E5D9E5 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Alerts.h"; path = "../../../petCemetary/petCemetary/petCemetary/UIViewController+Alerts.h"; sourceTree = "<group>"; };
+		9BBB35141E4E39F700E5D9E5 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Alerts.m"; path = "../../../petCemetary/petCemetary/petCemetary/UIViewController+Alerts.m"; sourceTree = "<group>"; };
+		9BE9BDBC1E4E356A0007F9EC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9BE9BDBD1E4E356A0007F9EC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C7D708FAC892B51FC12C7ADF /* libPods-modulePhotos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-modulePhotos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +87,10 @@
 				9B23DD221E4D23B000B3F856 /* ViewController.h */,
 				9B23DD231E4D23B000B3F856 /* ViewController.m */,
 				9B23DD251E4D23B000B3F856 /* Main.storyboard */,
+				9BE9BDBC1E4E356A0007F9EC /* LoginViewController.h */,
+				9BE9BDBD1E4E356A0007F9EC /* LoginViewController.m */,
+				9BBB35131E4E39F700E5D9E5 /* UIViewController+Alerts.h */,
+				9BBB35141E4E39F700E5D9E5 /* UIViewController+Alerts.m */,
 				9B23DD281E4D23B000B3F856 /* Assets.xcassets */,
 				9B23DD2A1E4D23B000B3F856 /* LaunchScreen.storyboard */,
 				9B8B697B1E4D285400A5FB02 /* GoogleService-Info.plist */,
@@ -190,7 +200,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		36EB8D74C991BD3AE11A6F30 /* [CP] Copy Pods Resources */ = {
@@ -230,6 +240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE9BDBE1E4E356A0007F9EC /* LoginViewController.m in Sources */,
+				9BBB35151E4E39F700E5D9E5 /* UIViewController+Alerts.m in Sources */,
 				9B23DD241E4D23B000B3F856 /* ViewController.m in Sources */,
 				9B23DD211E4D23B000B3F856 /* AppDelegate.m in Sources */,
 				9B23DD1E1E4D23B000B3F856 /* main.m in Sources */,

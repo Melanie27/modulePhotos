@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "620E2028C6D87CDB26188B9F8567863C039FF5F8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "620E2028C6D87CDB26188B9F8567863C039FF5F8" : 9223372036854775807,
+    "145BEC4AE8459DD196EDF08347CCE50F863D2ED9" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5C59E8A3-8DBC-417E-A5B6-9A7F38F96015",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "620E2028C6D87CDB26188B9F8567863C039FF5F8" : "modulePhotos\/",
+    "145BEC4AE8459DD196EDF08347CCE50F863D2ED9" : "petCemetary\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "modulePhotos",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "modulePhotos\/modulePhotos.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Melanie27\/petCemetary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "145BEC4AE8459DD196EDF08347CCE50F863D2ED9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Melanie27\/modulePhotos.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "620E2028C6D87CDB26188B9F8567863C039FF5F8"
+    }
+  ]
+}
